@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ezhaohui
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.144.227.168/db_ezhao?useSSL=false&serverTimezone=UTC&charactorEncoding=UTF-8
+    username: root
+    password: 123ljx456
+  mvc:
+    static-path-pattern: /**
+server:
+  port: 8088
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.join.epileptic.entity
