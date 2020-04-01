@@ -14,4 +14,4 @@ server:
   port: 8088
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.join.epileptic.entity
+  type-aliases-package: com.join.ezhaohui.entity
