@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.join.ezhaohui.mapper.picmapper.PicMapper" >
+    <select id="getAll" resultType="com.join.ezhaohui.entity.pic.Pic"  >
+        SELECT *
+        FROM t_pic
+    </select>
+
+    <insert id="insertPic" parameterType="com.join.ezhaohui.entity.pic.Pic">
+        insert into t_pic
+        values (,#{Pic.desc},#{Pic.url},#{Pic.pic_url})
+    </insert>
+</mapper>
