@@ -2,9 +2,18 @@ package com.join.ezhaohui.entity.pic;
 
 public class Pic {
     private int id;
-    private String desc;
+    private String descr;
     private String url;
     private String pic_url;
+    private int rank;
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
 
     public int getId() {
         return id;
@@ -14,12 +23,12 @@ public class Pic {
         this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescr() {
+        return descr;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescr(String desc) {
+        this.descr = desc;
     }
 
     public String getUrl() {
@@ -40,11 +49,12 @@ public class Pic {
 
     @Override
     public String toString() {
-        return "pic{" +
+        return "Pic{" +
                 "id=" + id +
-                ", desc='" + desc + '\'' +
+                ", descr='" + descr + '\'' +
                 ", url='" + url + '\'' +
                 ", pic_url='" + pic_url + '\'' +
+                ", rank='" + rank + '\'' +
                 '}';
     }
 }

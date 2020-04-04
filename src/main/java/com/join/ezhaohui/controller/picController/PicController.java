@@ -2,27 +2,53 @@ package com.join.ezhaohui.controller.picController;
 
 import com.join.ezhaohui.entity.pic.Pic;
 import com.join.ezhaohui.service.PicService.PicService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+import java.io.File;
+import java.util.List;
+
+@Controller
 @RequestMapping("/pic")
 public class PicController {
+
     @Autowired
     private PicService picService;
 
+    @ResponseBody
     @RequestMapping("/getAll")
-    public Pic getAll() throws Exception{
+    public List<Pic> getAll() throws Exception{
         return picService.getAll();
     }
 
+    @ResponseBody
     @RequestMapping("/insertPic")
-    public boolean insertPic(String desc,String url,String pic_url) throws Exception{
+    public boolean insertPic(String descr, String url, String pic_url, MultipartFile picture, int rank) throws Exception{
         Pic pic = new Pic();
-        pic.setDesc(desc);
-        pic.setPic_url(pic_url);
+        pic.setDescr(descr);
         pic.setUrl(url);
-        return picService.insertPic(pic);
+        pic.setPic_url(pic_url);
+        pic.setRank(rank);
+        if(picService.rankExist(rank)) {
+            return false;
+        }
+        return picService.insertPic(pic,picture);
     }
+
+    @ResponseBody
+    @RequestMapping("/delete")
+    public boolean deletePic(Integer id) throws Exception{
+        return picService.deletePic(id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/rankExist")
+    public boolean rankRepeat(Integer rank) throws Exception{
+        return picService.rankExist(rank);
+    }
+
 }

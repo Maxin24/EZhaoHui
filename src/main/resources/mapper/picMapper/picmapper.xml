@@ -5,10 +5,23 @@
     <select id="getAll" resultType="com.join.ezhaohui.entity.pic.Pic"  >
         SELECT *
         FROM t_pic
+        order by rank
     </select>
 
     <insert id="insertPic" parameterType="com.join.ezhaohui.entity.pic.Pic">
-        insert into t_pic
-        values (,#{Pic.desc},#{Pic.url},#{Pic.pic_url})
+        insert into t_pic(descr,url,pic_url,rank)
+        values (#{descr},#{url},#{pic_url},#{rank})
     </insert>
+
+    <delete id="deletePic">
+        delete
+        from t_pic
+        where id = #{id}
+    </delete>
+
+    <select id="rankExist" resultType="com.join.ezhaohui.entity.pic.Pic">
+        select *
+        from t_pic
+        where rank = #{rank}
+    </select>
 </mapper>

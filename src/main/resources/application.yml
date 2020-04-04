@@ -10,8 +10,10 @@ spring:
     password: 123ljx456
   mvc:
     static-path-pattern: /**
+  resources:
+    static-locations: classpath:/resources/,classpath:/static/
 server:
   port: 8088
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/*/*.xml
   type-aliases-package: com.join.ezhaohui.entity
