@@ -11,7 +11,7 @@ spring:
   mvc:
     static-path-pattern: /**
 server:
-  port: 8088
+  port: 8084
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.join.ezhaohui.entity
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.join.ezhaohui
