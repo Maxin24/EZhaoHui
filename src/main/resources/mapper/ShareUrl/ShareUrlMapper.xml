@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.ezhaohui.mapper.ShareUrlMapper">
+  <resultMap id="BaseResultMap" type="com.join.ezhaohui.entity.ShareUrl">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, url, upload_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_share_url
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUrl" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_share_url
+    where url= #{url,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_share_url
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.join.ezhaohui.entity.ShareUrl" useGeneratedKeys="true">
+    insert into t_share_url (url, upload_time)
+    values (#{url,jdbcType=VARCHAR}, #{uploadTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.join.ezhaohui.entity.ShareUrl" useGeneratedKeys="true">
+    insert into t_share_url
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="url != null">
+        url,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.join.ezhaohui.entity.ShareUrl">
+    update t_share_url
+    <set>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.join.ezhaohui.entity.ShareUrl">
+    update t_share_url
+    set url = #{url,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
