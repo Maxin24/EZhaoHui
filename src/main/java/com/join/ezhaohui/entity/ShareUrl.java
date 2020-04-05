@@ -1,7 +1,9 @@
 package com.join.ezhaohui.entity;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * t_share_url
@@ -11,6 +13,8 @@ public class ShareUrl implements Serializable {
 
     private Integer id;
 
+    private Integer state;
+
     private String url;
 
     private Date uploadTime;
@@ -19,6 +23,16 @@ public class ShareUrl implements Serializable {
 
     public ShareUrl(String url){
         this.url = url;
+    }
+
+    public ShareUrl(int id,String url){
+        this.id = id;
+        this.url = url;
+    }
+
+    public ShareUrl(int id,int state){
+        this.id = id;
+        this.state = state;
     }
 
     public Integer getId() {
@@ -45,44 +59,37 @@ public class ShareUrl implements Serializable {
         this.uploadTime = uploadTime;
     }
 
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
     @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        ShareUrl other = (ShareUrl) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUrl() == null ? other.getUrl() == null : this.getUrl().equals(other.getUrl()))
-            && (this.getUploadTime() == null ? other.getUploadTime() == null : this.getUploadTime().equals(other.getUploadTime()));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShareUrl shareUrl = (ShareUrl) o;
+        return Objects.equals(id, shareUrl.id) &&
+                Objects.equals(state, shareUrl.state) &&
+                Objects.equals(url, shareUrl.url) &&
+                Objects.equals(uploadTime, shareUrl.uploadTime);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getUrl() == null) ? 0 : getUrl().hashCode());
-        result = prime * result + ((getUploadTime() == null) ? 0 : getUploadTime().hashCode());
-        return result;
+        return Objects.hash(id, state, url, uploadTime);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", url=").append(url);
-        sb.append(", uploadTime=").append(uploadTime);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "ShareUrl{" +
+                "id=" + id +
+                ", state=" + state +
+                ", url='" + url + '\'' +
+                ", uploadTime=" + uploadTime +
+                '}';
     }
 }

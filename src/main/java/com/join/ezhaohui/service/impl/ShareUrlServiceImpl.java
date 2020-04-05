@@ -57,4 +57,16 @@ public class ShareUrlServiceImpl implements ShareUrlService {
     public ShareUrl searchShareUrlByUrl(String url) throws Exception {
         return shareUrlMapper.selectByUrl(url);
     }
+
+    /**
+     * 审阅完毕后处理 t_share_url state 设置为 1【已阅】
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @Override
+    public int fixShareUrlById(int id) throws Exception {
+        ShareUrl url = new ShareUrl(id,1);
+        return shareUrlMapper.updateByPrimaryKey(url);
+    }
 }

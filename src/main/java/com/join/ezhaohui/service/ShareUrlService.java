@@ -11,4 +11,6 @@ public interface  ShareUrlService {
     public ShareUrl searchShareUrlById(int id)throws Exception;
 
     public ShareUrl searchShareUrlByUrl(String url)throws Exception;
+
+    public int fixShareUrlById(int id)throws Exception;
 }

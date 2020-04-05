@@ -9,6 +9,9 @@
   <sql id="Base_Column_List">
     id, url, upload_time
   </sql>
+  <select id="selectAll" >
+
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -62,8 +65,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.join.ezhaohui.entity.ShareUrl">
     update t_share_url
-    set url = #{url,jdbcType=VARCHAR},
-      upload_time = #{uploadTime,jdbcType=TIMESTAMP}
+    set state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

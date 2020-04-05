@@ -34,4 +34,9 @@ public class ShareUrlTest {
         ShareUrl url = shareUrlService.searchShareUrlByUrl("hello the fucking world");
         System.out.println(url.toString());
     }
+
+    @Test
+    public void testfixUrl() throws Exception{
+        shareUrlService.fixShareUrlById(2);
+    }
 }
