@@ -2,6 +2,8 @@ package com.join.ezhaohui.service;
 
 import com.join.ezhaohui.entity.ShareUrl;
 
+import java.util.List;
+
 public interface  ShareUrlService {
 
     public int addShareUrl(ShareUrl shareUrl) throws Exception;
@@ -13,4 +15,6 @@ public interface  ShareUrlService {
     public ShareUrl searchShareUrlByUrl(String url)throws Exception;
 
     public int fixShareUrlById(int id)throws Exception;
+
+    public List<ShareUrl> listShareUrl()throws Exception;
 }

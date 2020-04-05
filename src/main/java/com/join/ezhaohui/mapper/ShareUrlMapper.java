@@ -4,6 +4,8 @@ import com.join.ezhaohui.entity.ShareUrl;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface ShareUrlMapper {
@@ -16,6 +18,8 @@ public interface ShareUrlMapper {
     ShareUrl selectByPrimaryKey(int id);
 
     ShareUrl selectByUrl(String Url);
+
+    List<ShareUrl> selectAll();
 
     int updateByPrimaryKeySelective(ShareUrl record);
 
