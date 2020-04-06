@@ -2,7 +2,6 @@ package com.join.ezhaohui.entity.pic;
 
 public class Pic {
     private int id;
-    private String descr;
     private String url;
     private String pic_url;
     private int rank;
@@ -21,14 +20,6 @@ public class Pic {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getDescr() {
-        return descr;
-    }
-
-    public void setDescr(String desc) {
-        this.descr = desc;
     }
 
     public String getUrl() {
@@ -51,7 +42,6 @@ public class Pic {
     public String toString() {
         return "Pic{" +
                 "id=" + id +
-                ", descr='" + descr + '\'' +
                 ", url='" + url + '\'' +
                 ", pic_url='" + pic_url + '\'' +
                 ", rank='" + rank + '\'' +

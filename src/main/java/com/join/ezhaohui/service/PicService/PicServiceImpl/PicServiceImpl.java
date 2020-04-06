@@ -42,8 +42,9 @@ public class PicServiceImpl implements PicService {
      */
     @Override
     public boolean insertPic(Pic pic, MultipartFile picture) throws Exception{
-        String path = "D:/pic/";
+        String path = "d:/";
         String filename = picture.getOriginalFilename();
+        System.out.println(filename);
         if(filename == null){
             System.out.println("空字符串");
             return false;
@@ -51,7 +52,7 @@ public class PicServiceImpl implements PicService {
         String teal = filename.substring(filename.lastIndexOf("."));
         String finalfilename = path + pic.getId()+teal;
         File file = new File(finalfilename);
-
+        System.out.println(finalfilename);
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdir();
         }
@@ -61,6 +62,7 @@ public class PicServiceImpl implements PicService {
             pic.setPic_url(finalfilename);
         }catch (IllegalStateException | IOException e){
             e.printStackTrace();
+            return false;
         }
         System.out.println(pic.getPic_url());
         return picMapper.insertPic(pic);
@@ -86,6 +88,11 @@ public class PicServiceImpl implements PicService {
     @Override
     public boolean rankExist(Integer rank)throws Exception{
         return picMapper.rankExist(rank) != null;
+    }
+
+    @Override
+    public boolean update(Pic pic)throws Exception{
+        return picMapper.update(pic);
     }
 
 }

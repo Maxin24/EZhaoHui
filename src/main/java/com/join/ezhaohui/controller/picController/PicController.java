@@ -2,14 +2,12 @@ package com.join.ezhaohui.controller.picController;
 
 import com.join.ezhaohui.entity.pic.Pic;
 import com.join.ezhaohui.service.PicService.PicService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 
 @Controller
@@ -27,11 +25,9 @@ public class PicController {
 
     @ResponseBody
     @RequestMapping("/insertPic")
-    public boolean insertPic(String descr, String url, String pic_url, MultipartFile picture, int rank) throws Exception{
+    public boolean insertPic(String url, MultipartFile picture, int rank) throws Exception{
         Pic pic = new Pic();
-        pic.setDescr(descr);
         pic.setUrl(url);
-        pic.setPic_url(pic_url);
         pic.setRank(rank);
         if(picService.rankExist(rank)) {
             return false;
@@ -49,6 +45,16 @@ public class PicController {
     @RequestMapping("/rankExist")
     public boolean rankRepeat(Integer rank) throws Exception{
         return picService.rankExist(rank);
+    }
+
+    @ResponseBody
+    @RequestMapping("/update")
+    public boolean update(Integer id,String url,Integer rank)throws Exception{
+        Pic pic = new Pic();
+        pic.setId(id);
+        pic.setUrl(url);
+        pic.setRank(rank);
+        return picService.update(pic);
     }
 
 }

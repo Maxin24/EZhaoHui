@@ -12,4 +12,5 @@ public interface PicMapper {
     boolean insertPic(Pic pic) throws Exception;
     boolean deletePic(@Param("id") Integer id) throws Exception;
     Pic rankExist(@Param("rank")Integer rank)throws Exception;
+    boolean update(Pic pic)throws Exception;
 }

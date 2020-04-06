@@ -12,4 +12,5 @@ public interface PicService {
     boolean insertPic(Pic pic, MultipartFile picture) throws Exception;
     boolean deletePic(Integer id) throws Exception;
     boolean rankExist(Integer rank)throws Exception;
+    boolean update(Pic pic)throws Exception;
 }

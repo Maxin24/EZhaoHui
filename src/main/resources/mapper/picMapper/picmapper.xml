@@ -9,8 +9,8 @@
     </select>
 
     <insert id="insertPic" parameterType="com.join.ezhaohui.entity.pic.Pic">
-        insert into t_pic(descr,url,pic_url,rank)
-        values (#{descr},#{url},#{pic_url},#{rank})
+        insert into t_pic(url,pic_url,rank)
+        values (#{url},#{pic_url},#{rank})
     </insert>
 
     <delete id="deletePic">
@@ -24,4 +24,10 @@
         from t_pic
         where rank = #{rank}
     </select>
+
+    <update id="update" parameterType="com.join.ezhaohui.entity.pic.Pic">
+        update t_pic
+        set url = #{url},rank = #{rank}
+        where id = #{id}
+    </update>
 </mapper>
