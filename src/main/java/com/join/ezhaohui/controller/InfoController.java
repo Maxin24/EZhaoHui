@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -15,31 +17,31 @@ import java.util.List;
  * @Date:2020/4/4
  * @Description:
  */
-@Controller
+@RestController
 @CrossOrigin
 @RequestMapping("/info")
 public class InfoController {
-    @Autowired
-    InfoService infoService;
-
+    @Resource
+    InfoService infoServiceImpl;
+    
     //测试成功
     @RequestMapping("/multiSelect")
     public List<Info> multiSelect(Info info){
-        return infoService.multiSelect(info);
+        return infoServiceImpl.multiSelect(info);
     }
     //测试成功
     @RequestMapping("/insert")
     public int insert(Info info){
-        return infoService.insert(info);
+        return infoServiceImpl.insert(info);
     }
     //测试成功
     @RequestMapping("/updateByPrimaryKeySelective")
     public int updateByPrimaryKeySelective(Info info){
-        return infoService.updateByPrimaryKeySelective(info);
+        return infoServiceImpl.updateByPrimaryKeySelective(info);
     }
     //测试成功
     @RequestMapping("/deleteByPrimaryKey")
     public int deleteByPrimaryKey(int id){
-        return infoService.deleteByPrimaryKey(id);
+        return infoServiceImpl.deleteByPrimaryKey(id);
     }
 }
