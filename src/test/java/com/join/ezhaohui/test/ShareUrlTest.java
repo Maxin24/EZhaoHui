@@ -26,13 +26,13 @@ public class ShareUrlTest {
     @Test
     public void testAddUrl() throws Exception{
         Date time = new Date(System.currentTimeMillis());
-        ShareUrl shareUrl = new ShareUrl("hello the fucking world");
+        ShareUrl shareUrl = new ShareUrl("https://zhidao.baidu.com/question/650813762312320885.html");
         shareUrlService.addShareUrl(shareUrl);
     }
 
     @Test
     public void testSelectUrl() throws Exception{
-        ShareUrl url = shareUrlService.searchShareUrlByUrl("hello the fucking world");
+        ShareUrl url = shareUrlService.searchShareUrlByUrl("https://zhidao.baidu.com/question/650813762312320885.html");
         System.out.println(url);
     }
 
