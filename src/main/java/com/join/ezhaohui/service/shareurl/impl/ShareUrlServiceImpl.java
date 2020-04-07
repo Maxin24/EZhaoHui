@@ -1,9 +1,9 @@
-package com.join.ezhaohui.service.impl;
+package com.join.ezhaohui.service.shareurl.impl;
 
 
 import com.join.ezhaohui.entity.ShareUrl;
 import com.join.ezhaohui.mapper.ShareUrlMapper;
-import com.join.ezhaohui.service.ShareUrlService;
+import com.join.ezhaohui.service.shareurl.ShareUrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

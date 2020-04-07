@@ -2,7 +2,7 @@ package com.join.ezhaohui.controller;
 
 
 import com.join.ezhaohui.entity.ShareUrl;
-import com.join.ezhaohui.service.ShareUrlService;
+import com.join.ezhaohui.service.shareurl.ShareUrlService;
 import com.join.ezhaohui.utils.resultHander.CommonErrorEnum;
 import com.join.ezhaohui.utils.resultHander.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;

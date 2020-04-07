@@ -23,7 +23,7 @@ import java.util.List;
 public class InfoController {
     @Resource
     InfoService infoServiceImpl;
-    
+
     //测试成功
     @RequestMapping("/multiSelect")
     public List<Info> multiSelect(Info info){

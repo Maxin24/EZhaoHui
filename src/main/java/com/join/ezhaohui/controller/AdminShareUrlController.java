@@ -1,10 +1,9 @@
 package com.join.ezhaohui.controller;
 
 import com.join.ezhaohui.entity.ShareUrl;
-import com.join.ezhaohui.service.impl.ShareUrlServiceImpl;
+import com.join.ezhaohui.service.shareurl.impl.ShareUrlServiceImpl;
 import com.join.ezhaohui.utils.resultHander.CommonErrorEnum;
 import com.join.ezhaohui.utils.resultHander.ResponseBean;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,7 +2,7 @@ package com.join.ezhaohui.test;
 
 import com.join.ezhaohui.EzhaohuiApplication;
 import com.join.ezhaohui.entity.ShareUrl;
-import com.join.ezhaohui.service.impl.ShareUrlServiceImpl;
+import com.join.ezhaohui.service.shareurl.impl.ShareUrlServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

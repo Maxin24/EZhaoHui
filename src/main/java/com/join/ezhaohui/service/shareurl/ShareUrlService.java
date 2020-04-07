@@ -1,4 +1,4 @@
-package com.join.ezhaohui.service;
+package com.join.ezhaohui.service.shareurl;
 
 import com.join.ezhaohui.entity.ShareUrl;
 
