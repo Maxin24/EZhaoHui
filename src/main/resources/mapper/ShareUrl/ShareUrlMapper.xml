@@ -29,7 +29,8 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_share_url
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER};
+    ALTER TABLE t_share_url AUTO_INCREMENT = 1;
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.join.ezhaohui.entity.ShareUrl" useGeneratedKeys="true">
     insert into t_share_url (url, upload_time)
