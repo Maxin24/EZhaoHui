@@ -30,4 +30,5 @@
         set url = #{url},rank = #{rank}
         where id = #{id}
     </update>
+
 </mapper>

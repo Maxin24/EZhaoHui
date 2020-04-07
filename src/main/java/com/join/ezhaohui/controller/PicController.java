@@ -4,13 +4,16 @@ import com.join.ezhaohui.entity.Pic;
 import com.join.ezhaohui.service.PicService.PicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
+@CrossOrigin
 @RequestMapping("/pic")
 public class PicController {
 
@@ -25,14 +28,14 @@ public class PicController {
 
     @ResponseBody
     @RequestMapping("/insertPic")
-    public boolean insertPic(String url, MultipartFile picture, int rank) throws Exception{
+    public Object insertPic(String url, MultipartFile picture, int rank, HttpServletRequest request) throws Exception{
         Pic pic = new Pic();
         pic.setUrl(url);
         pic.setRank(rank);
         if(picService.rankExist(rank)) {
-            return false;
+            return new String("已经存在对应rank轮播图");
         }
-        return picService.insertPic(pic,picture);
+        return new String(picService.insertPic(pic,picture,request));
     }
 
     @ResponseBody

@@ -7,9 +7,9 @@
     <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
     <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
-  <sql id="Base_Column_List">
-    id, url, upload_time
-  </sql>
+    <sql id="Base_Column_List">
+      id, url, upload_time
+    </sql>
   <select id="selectAll" resultMap="BaseResultMap">
     select
     *
