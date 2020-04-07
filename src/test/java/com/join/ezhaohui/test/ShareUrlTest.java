@@ -3,8 +3,8 @@ package com.join.ezhaohui.test;
 import com.join.ezhaohui.EzhaohuiApplication;
 import com.join.ezhaohui.entity.ShareUrl;
 import com.join.ezhaohui.service.shareurl.impl.ShareUrlServiceImpl;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Date;
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(classes = EzhaohuiApplication.class)
 public class ShareUrlTest {
     @Autowired
@@ -33,7 +33,7 @@ public class ShareUrlTest {
     @Test
     public void testSelectUrl() throws Exception{
         ShareUrl url = shareUrlService.searchShareUrlByUrl("hello the fucking world");
-        System.out.println(url.toString());
+        System.out.println(url);
     }
 
     @Test

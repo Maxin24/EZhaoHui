@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Mapper
 public interface PicMapper {
     List<Pic> getAll() throws Exception;
     boolean insertPic(Pic pic) throws Exception;
