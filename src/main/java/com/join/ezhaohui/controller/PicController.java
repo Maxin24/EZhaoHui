@@ -1,6 +1,6 @@
-package com.join.ezhaohui.controller.picController;
+package com.join.ezhaohui.controller;
 
-import com.join.ezhaohui.entity.pic.Pic;
+import com.join.ezhaohui.entity.Pic;
 import com.join.ezhaohui.service.PicService.PicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

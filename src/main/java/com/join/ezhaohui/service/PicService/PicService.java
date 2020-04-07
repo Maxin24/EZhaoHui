@@ -1,7 +1,7 @@
 package com.join.ezhaohui.service.PicService;
 
 
-import com.join.ezhaohui.entity.pic.Pic;
+import com.join.ezhaohui.entity.Pic;
 
 import org.springframework.web.multipart.MultipartFile;
 

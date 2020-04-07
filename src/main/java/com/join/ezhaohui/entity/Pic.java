@@ -1,4 +1,4 @@
-package com.join.ezhaohui.entity.pic;
+package com.join.ezhaohui.entity;
 
 public class Pic {
     private int id;

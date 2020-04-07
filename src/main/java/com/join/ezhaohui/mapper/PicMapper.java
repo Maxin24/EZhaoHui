@@ -1,12 +1,13 @@
-package com.join.ezhaohui.mapper.picmapper;
+package com.join.ezhaohui.mapper;
 
-import com.join.ezhaohui.entity.pic.Pic;
+import com.join.ezhaohui.entity.Pic;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
+@Repository
 public interface PicMapper {
     List<Pic> getAll() throws Exception;
     boolean insertPic(Pic pic) throws Exception;
