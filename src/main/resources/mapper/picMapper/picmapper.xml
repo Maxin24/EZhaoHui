@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.join.ezhaohui.mapper.picmapper.PicMapper" >
+    <select id="getAll" resultType="com.join.ezhaohui.entity.pic.Pic"  >
+        SELECT *
+        FROM t_pic
+        order by rank
+    </select>
+
+    <insert id="insertPic" parameterType="com.join.ezhaohui.entity.pic.Pic">
+        insert into t_pic(url,pic_url,rank)
+        values (#{url},#{pic_url},#{rank})
+    </insert>
+
+    <delete id="deletePic">
+        delete
+        from t_pic
+        where id = #{id}
+    </delete>
+
+    <select id="rankExist" resultType="com.join.ezhaohui.entity.pic.Pic">
+        select *
+        from t_pic
+        where rank = #{rank}
+    </select>
+
+    <update id="update" parameterType="com.join.ezhaohui.entity.pic.Pic">
+        update t_pic
+        set url = #{url},rank = #{rank}
+        where id = #{id}
+    </update>
+</mapper>
