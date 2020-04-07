@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.join.ezhaohui.mapper.InfoMapper">
+  <resultMap id="BaseResultMap" type="com.join.ezhaohui.entity.Info">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="creatTime" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="expirationTime" jdbcType="TIMESTAMP" property="expirationTime" />
+    <result column="isRecommend" jdbcType="VARCHAR" property="isRecommend" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="companyNature" jdbcType="VARCHAR" property="companyNature" />
+    <result column="jobName" jdbcType="VARCHAR" property="jobName" />
+    <result column="jobNature" jdbcType="VARCHAR" property="jobNature" />
+    <result column="eduBackground" jdbcType="VARCHAR" property="eduBackground" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, `type`, creatTime, expirationTime, isRecommend, `position`, companyName, companyNature, 
+    jobName, jobNature, eduBackground, url
+  </sql>
+  <select id="selectByExample" parameterType="com.join.ezhaohui.entity.InfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.join.ezhaohui.entity.InfoExample">
+    delete from t_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.join.ezhaohui.entity.Info">
+    insert into t_info (id, `type`, creatTime, 
+      expirationTime, isRecommend, `position`, 
+      companyName, companyNature, jobName, 
+      jobNature, eduBackground, url
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{expirationTime,jdbcType=TIMESTAMP}, #{isRecommend,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{companyNature,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobNature,jdbcType=VARCHAR}, #{eduBackground,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.join.ezhaohui.entity.Info">
+    insert into t_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="creatTime != null">
+        creatTime,
+      </if>
+      <if test="expirationTime != null">
+        expirationTime,
+      </if>
+      <if test="isRecommend != null">
+        isRecommend,
+      </if>
+      <if test="position != null">
+        `position`,
+      </if>
+      <if test="companyName != null">
+        companyName,
+      </if>
+      <if test="companyNature != null">
+        companyNature,
+      </if>
+      <if test="jobName != null">
+        jobName,
+      </if>
+      <if test="jobNature != null">
+        jobNature,
+      </if>
+      <if test="eduBackground != null">
+        eduBackground,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expirationTime != null">
+        #{expirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isRecommend != null">
+        #{isRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        #{companyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null">
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNature != null">
+        #{jobNature,jdbcType=VARCHAR},
+      </if>
+      <if test="eduBackground != null">
+        #{eduBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.join.ezhaohui.entity.InfoExample" resultType="java.lang.Long">
+    select count(*) from t_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="multiSelect" resultType="com.join.ezhaohui.entity.Info" parameterType="com.join.ezhaohui.entity.Info">
+    select
+    <include refid="Base_Column_List"/>
+    from t_info
+    <where>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="creatTime != null">
+        and creatTime = #{creatTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="expirationTime != null">
+        and expirationTime = #{expirationTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isRecommend != null">
+        and isRecommend = #{isRecommend,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null">
+        and `position` = #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="companyName != null">
+        and companyName = #{companyName,jdbcType=VARCHAR}
+      </if>
+      <if test="companyNature != null">
+        and companyNature = #{companyNature,jdbcType=VARCHAR}
+      </if>
+      <if test="jobName != null">
+        and jobName = #{jobName,jdbcType=VARCHAR}
+      </if>
+      <if test="jobNature != null">
+        and jobNature = #{jobNature,jdbcType=VARCHAR}
+      </if>
+      <if test="eduBackground != null">
+        and eduBackground = #{eduBackground,jdbcType=VARCHAR}
+      </if>
+      <if test="url != null">
+        and url = #{url,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        `type` = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creatTime != null">
+        creatTime = #{record.creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.expirationTime != null">
+        expirationTime = #{record.expirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isRecommend != null">
+        isRecommend = #{record.isRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="record.position != null">
+        `position` = #{record.position,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        companyName = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyNature != null">
+        companyNature = #{record.companyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobName != null">
+        jobName = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobNature != null">
+        jobNature = #{record.jobNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eduBackground != null">
+        eduBackground = #{record.eduBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_info
+    set id = #{record.id,jdbcType=INTEGER},
+      `type` = #{record.type,jdbcType=VARCHAR},
+      creatTime = #{record.creatTime,jdbcType=TIMESTAMP},
+      expirationTime = #{record.expirationTime,jdbcType=TIMESTAMP},
+      isRecommend = #{record.isRecommend,jdbcType=VARCHAR},
+      `position` = #{record.position,jdbcType=VARCHAR},
+      companyName = #{record.companyName,jdbcType=VARCHAR},
+      companyNature = #{record.companyNature,jdbcType=VARCHAR},
+      jobName = #{record.jobName,jdbcType=VARCHAR},
+      jobNature = #{record.jobNature,jdbcType=VARCHAR},
+      eduBackground = #{record.eduBackground,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.join.ezhaohui.entity.Info">
+    update t_info
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null">
+        creatTime = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expirationTime != null">
+        expirationTime = #{expirationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isRecommend != null">
+        isRecommend = #{isRecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        `position` = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNature != null">
+        companyNature = #{companyNature,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null">
+        jobName = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNature != null">
+        jobNature = #{jobNature,jdbcType=VARCHAR},
+      </if>
+      <if test="eduBackground != null">
+        eduBackground = #{eduBackground,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.join.ezhaohui.entity.Info">
+    update t_info
+    set `type` = #{type,jdbcType=VARCHAR},
+      creatTime = #{creatTime,jdbcType=TIMESTAMP},
+      expirationTime = #{expirationTime,jdbcType=TIMESTAMP},
+      isRecommend = #{isRecommend,jdbcType=VARCHAR},
+      `position` = #{position,jdbcType=VARCHAR},
+      companyName = #{companyName,jdbcType=VARCHAR},
+      companyNature = #{companyNature,jdbcType=VARCHAR},
+      jobName = #{jobName,jdbcType=VARCHAR},
+      jobNature = #{jobNature,jdbcType=VARCHAR},
+      eduBackground = #{eduBackground,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
