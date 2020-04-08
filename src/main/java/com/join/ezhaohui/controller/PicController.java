@@ -40,8 +40,11 @@ public class PicController {
 
     @ResponseBody
     @RequestMapping("/delete")
-    public boolean deletePic(Integer id) throws Exception{
-        return picService.deletePic(id);
+    public Object deletePic(Integer id) throws Exception{
+        if (id.equals(null)){
+            return new String("空值！");
+        }
+        return new String(String.valueOf(picService.deletePic(id)));
     }
 
     @ResponseBody
