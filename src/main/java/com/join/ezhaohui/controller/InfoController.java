@@ -2,6 +2,7 @@ package com.join.ezhaohui.controller;
 
 import com.join.ezhaohui.entity.Info;
 import com.join.ezhaohui.service.info.InfoService;
+import com.join.ezhaohui.utils.resultHander.ResponseBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,22 +27,22 @@ public class InfoController {
 
     //测试成功
     @RequestMapping("/multiSelect")
-    public List<Info> multiSelect(Info info){
+    public Object multiSelect(Info info){
         return infoServiceImpl.multiSelect(info);
     }
     //测试成功
     @RequestMapping("/insert")
-    public int insert(Info info){
+    public Object insert(Info info){
         return infoServiceImpl.insert(info);
     }
     //测试成功
     @RequestMapping("/updateByPrimaryKeySelective")
-    public int updateByPrimaryKeySelective(Info info){
+    public Object updateByPrimaryKeySelective(Info info){
         return infoServiceImpl.updateByPrimaryKeySelective(info);
     }
     //测试成功
     @RequestMapping("/deleteByPrimaryKey")
-    public int deleteByPrimaryKey(int id){
+    public Object deleteByPrimaryKey(int id){
         return infoServiceImpl.deleteByPrimaryKey(id);
     }
 }

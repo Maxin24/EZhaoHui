@@ -54,6 +54,7 @@ public enum CommonErrorEnum {
     FAILED_AUTH("041", "非法请求，请登录后操作"),
     FIRST_DOWNLOAD("042", "首次下载");
 
+
     private String code;
 
     private String msg;
