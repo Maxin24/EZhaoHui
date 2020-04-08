@@ -5,6 +5,7 @@ import com.join.ezhaohui.mapper.PicMapper;
 import com.join.ezhaohui.service.PicService.PicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,8 @@ public class PicServiceImpl implements PicService {
      */
     @Override
     public String insertPic(Pic pic, MultipartFile picture, HttpServletRequest request) throws Exception{
-        String path = request.getSession().getServletContext().getRealPath("/static");
+
+        String path = ResourceUtils.getURL("classpath:").getPath()+"/static/";
         String filename;
         try{
         filename = picture.getOriginalFilename();
@@ -53,22 +55,25 @@ public class PicServiceImpl implements PicService {
          * 文件上传类型判断
          */
         String finalfilename;
+        String finalfilename1;
         assert filename != null;
         String teal = filename.substring(filename.lastIndexOf("."));
         if(teal.equals(".png") | teal.equals(".jpg") | teal.equals(".bmp") | teal.equals(".tif")){
-            finalfilename = path + File.separator + pic.getRank() + teal;
+            finalfilename = path + pic.getRank() +teal;
+            String path1 = new String("http://192.144.227.168:8088/");
+            finalfilename1 = path1 + pic.getRank() + teal;
         }else {
             return "图片格式错误";
         }
         File file = new File(finalfilename);
-        System.out.println(finalfilename);
+        System.out.println(finalfilename1);
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdir();
         }
 
         try{
             picture.transferTo(file);
-            pic.setPic_url(finalfilename);
+            pic.setPic_url(finalfilename1);
         }catch (IllegalStateException | IOException e){
             e.printStackTrace();
             return "上传出错";
