@@ -44,7 +44,8 @@ public class PicServiceImpl implements PicService {
     @Override
     public String insertPic(Pic pic, MultipartFile picture, HttpServletRequest request) throws Exception{
 
-        String path = ResourceUtils.getURL("classpath:").getPath()+File.separator+"static"+File.separator;
+        String path = request.getServletContext().getRealPath("/static/");
+        //path.replace("/",File.separator);
         String filename;
         try{
         filename = picture.getOriginalFilename();
@@ -65,7 +66,7 @@ public class PicServiceImpl implements PicService {
         }
         if(teal.equals(".png") | teal.equals(".jpg") | teal.equals(".bmp") | teal.equals(".tif")){
             finalfilename = path + pic.getRank() +teal;
-            String path1 = new String("http://192.144.227.168:8089/");
+            String path1 = new String("http://192.144.227.168:8089/static/");
             finalfilename1 = path1 + pic.getRank() + teal;
         }else {
             return "图片格式错误";
