@@ -3,6 +3,7 @@ package com.join.ezhaohui.service.PicService.PicServiceImpl;
 import com.join.ezhaohui.entity.Pic;
 import com.join.ezhaohui.mapper.PicMapper;
 import com.join.ezhaohui.service.PicService.PicService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
@@ -65,9 +66,11 @@ public class PicServiceImpl implements PicService {
             return "empty file";
         }
         if(teal.equals(".png") | teal.equals(".jpg") | teal.equals(".bmp") | teal.equals(".tif")){
-            finalfilename = path + pic.getRank() +teal;
+            Integer hello = picMapper.getIdPre();
+            finalfilename = path + hello +teal;
             String path1 = new String("http://192.144.227.168:8089/static/");
-            finalfilename1 = path1 + pic.getRank() + teal;
+            finalfilename1 = path1 + hello + teal;
+            pic.setDesc(teal);
         }else {
             return "图片格式错误";
         }
@@ -76,7 +79,6 @@ public class PicServiceImpl implements PicService {
         if(!file.getParentFile().exists()){
             file.getParentFile().mkdir();
         }
-
         try{
             picture.transferTo(file);
             pic.setPic_url(finalfilename1);
@@ -99,6 +101,10 @@ public class PicServiceImpl implements PicService {
      */
     @Override
     public boolean deletePic(Integer id) throws Exception{
+        Integer rank = picMapper.selectById(id).getRank();
+        if(!picMapper.getByDelete(rank)){
+            return false;
+        }
         return picMapper.deletePic(id);
     }
 
@@ -114,8 +120,26 @@ public class PicServiceImpl implements PicService {
     }
 
     @Override
-    public boolean update(Pic pic)throws Exception{
-        return picMapper.update(pic);
+    public boolean update(Pic pic,HttpServletRequest request)throws Exception{
+        if (pic.getRank() != picMapper.selectById(pic.getId()).getRank()){
+            picMapper.getByUpdate(pic.getRank(),picMapper.selectById(pic.getId()).getRank());
+            return picMapper.update(pic);
+            }
+        else {
+            return picMapper.update(pic);
+        }
+    }
+
+    private boolean changeUrl(Integer new1,Integer old,String teal,HttpServletRequest request){
+        String path = request.getServletContext().getRealPath("/static/");
+        String newFinalPath = path + new1 + teal;
+        String oldFinalPath = path + old + teal;
+        File file1 = new File(newFinalPath);
+        File file2 = new File(oldFinalPath);
+        if(!file2.renameTo(file1)){
+            return false;
+        }
+        return true;
     }
 
 }

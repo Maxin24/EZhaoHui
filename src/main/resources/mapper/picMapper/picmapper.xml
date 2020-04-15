@@ -9,8 +9,8 @@
     </select>
 
     <insert id="insertPic" parameterType="com.join.ezhaohui.entity.Pic">
-        insert into t_pic(url,pic_url,rank)
-        values (#{url},#{pic_url},#{rank})
+        insert into t_pic(url,cdesc,pic_url,rank)
+        values (#{url},#{desc},#{pic_url},#{rank})
     </insert>
 
     <delete id="deletePic">
@@ -31,4 +31,26 @@
         where id = #{id}
     </update>
 
+    <select id="selectById" resultType="com.join.ezhaohui.entity.Pic">
+        select *
+        from t_pic
+        where id = #{id}
+    </select>
+    
+    <update id="getByDelete">
+        update t_pic
+        set rank = rank-1
+        where rank > #{rank}
+    </update>
+    
+    <update id="getByUpdate">
+        update t_pic
+        set rank = rank +1
+        where rank >= #{rank} and rank &lt; #{rank1}
+    </update>
+
+    <select id="getIdPre" resultType="java.lang.Integer">
+        select auto_increment from information_schema.`TABLES`
+        where table_name='t_pic'
+    </select>
 </mapper>

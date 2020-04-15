@@ -55,12 +55,12 @@ public class PicController {
 
     @ResponseBody
     @RequestMapping("/update")
-    public boolean update(Integer id,String url,Integer rank)throws Exception{
+    public boolean update(Integer id,String url,Integer rank,HttpServletRequest request)throws Exception{
         Pic pic = new Pic();
         pic.setId(id);
         pic.setUrl(url);
         pic.setRank(rank);
-        return picService.update(pic);
+        return picService.update(pic,request);
     }
 
 }

@@ -5,6 +5,15 @@ public class Pic {
     private String url;
     private String pic_url;
     private int rank;
+    private String cdesc;
+
+    public String getDesc() {
+        return cdesc;
+    }
+
+    public void setDesc(String desc) {
+        this.cdesc = desc;
+    }
 
     public int getRank() {
         return rank;

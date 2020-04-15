@@ -14,4 +14,8 @@ public interface PicMapper {
     boolean deletePic(@Param("id") Integer id) throws Exception;
     Pic rankExist(@Param("rank")Integer rank)throws Exception;
     boolean update(Pic pic)throws Exception;
+    Pic selectById(@Param("id")Integer id) throws Exception;
+    boolean getByDelete(@Param("rank")Integer rank)throws Exception;
+    boolean getByUpdate(@Param("rank")Integer rank,@Param("rank1")Integer rank1)throws Exception;
+    Integer getIdPre()throws Exception;
 }
