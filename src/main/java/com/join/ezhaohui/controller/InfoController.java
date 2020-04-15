@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,6 +34,9 @@ public class InfoController {
     //测试成功
     @RequestMapping("/insert")
     public Object insert(Info info){
+        if(info.getExpirationTime()==null){
+            info.setExpirationTime(new Date((long)2000000000*1000));
+        }
         return infoServiceImpl.insert(info);
     }
     //测试成功
