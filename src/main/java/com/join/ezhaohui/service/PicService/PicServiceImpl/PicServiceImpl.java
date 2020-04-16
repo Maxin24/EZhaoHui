@@ -68,7 +68,7 @@ public class PicServiceImpl implements PicService {
         if(teal.equals(".png") | teal.equals(".jpg") | teal.equals(".bmp") | teal.equals(".tif")){
             Integer hello = picMapper.getIdPre();
             finalfilename = path + hello +teal;
-            String path1 = new String("http://192.144.227.168:8089/static/");
+            String path1 = new String("http://210.47.16.56:8089/static/");
             finalfilename1 = path1 + hello + teal;
             pic.setDesc(teal);
         }else {

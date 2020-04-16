@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class InfoController {
     @RequestMapping("/insert")
     public Object insert(Info info){
         if(info.getExpirationTime()==null){
-            info.setExpirationTime(new Date((long)2000000000*1000));
+            info.setExpirationTime(new Timestamp((long)2000000000*1000));
         }
         return infoServiceImpl.insert(info);
     }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -30,9 +31,9 @@ public class InfoTests {
         Info record=new Info();
         record.setCompanyName("卓音");
         record.setCompanyNature("工作室");
-        record.setCreatTime(new Date());
+
         record.setEduBackground("本科");
-        record.setExpirationTime(date);
+
         record.setIsRecommend("是");
         record.setJobName("前端");
         record.setJobNature("IT");
