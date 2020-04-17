@@ -34,6 +34,12 @@ public class ShareUrl implements Serializable {
         this.id = id;
         this.state = state;
     }
+    
+    public ShareUrl(Integer id,String url,Date uploadTime){
+        this.id=id;
+        this.url=url;
+        this.uploadTime=uploadTime;
+    }
 
     public ShareUrl(Integer id, String url, Date uploadTime, Integer state ) {
         this.id = id;
