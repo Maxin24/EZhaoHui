@@ -3,6 +3,7 @@ package com.join.ezhaohui.mapper;
 import com.join.ezhaohui.entity.Info;
 import com.join.ezhaohui.entity.InfoExample;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,6 @@ import java.util.List;
 @Mapper
 public interface InfoMapper extends MyBatisBaseDao<Info, Integer, InfoExample> {
     public List<Info> multiSelect(Info record);
+
+
 }

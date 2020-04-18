@@ -252,6 +252,9 @@
       </if>
     </where>
   </select>
+  <select id="fuzzySelect" resultType="com.join.ezhaohui.entity.Info" parameterType="com.join.ezhaohui.entity.Info">
+    select
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update t_info
     <set>
