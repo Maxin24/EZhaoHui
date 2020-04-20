@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author:ljx
@@ -48,6 +49,17 @@ public class InfoTests {
         Info info=new Info();
         info.setJobName("前端");
         System.out.println(infoService.multiSelect(info));
+    }
+
+    @Test
+    public void testMultiFuzzySelect(){
+        Info msg = new Info();
+        msg.setUrl("山东");
+        List<Info> msgs = infoService.multiFuzzySelect(msg);
+        for(Info demo : msgs){
+            System.out.println(demo.toString());
+        }
+        System.out.println(infoService.multiFuzzySelect(msg));
     }
 
     @Test

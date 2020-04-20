@@ -24,12 +24,12 @@ public class ShareUrlController {
     @Autowired
     ShareUrlService shareUrlService;
 
-    @GetMapping("/upload")
+    @RequestMapping("/upload")
     public Object upload() {
         return "Here is upload page";
     }
 
-    @GetMapping("/insertUrl")
+    @RequestMapping("/insertUrl")
     public Object insertUrl(@RequestParam String url, HttpServletResponse response, HttpServletRequest request) throws Exception {
 
         int time = 0;
