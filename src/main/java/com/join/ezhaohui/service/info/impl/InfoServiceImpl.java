@@ -19,10 +19,14 @@ import java.util.List;
 public class InfoServiceImpl implements InfoService {
     @Autowired
     InfoMapper infoMapper;
+
     @Override
     public List<Info> multiSelect(Info record) {
         return infoMapper.multiSelect(record);
     }
+
+    @Override
+    public List<Info> multiFuzzySelect(Info record) { return infoMapper.multiFuzzySelect(record);}
 
     @Override
     public long countByExample(InfoExample example) {

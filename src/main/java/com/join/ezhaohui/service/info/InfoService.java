@@ -12,6 +12,9 @@ import java.util.List;
  */
 public interface InfoService {
     public List<Info> multiSelect(Info record);
+
+    List<Info> multiFuzzySelect(Info record);
+
     long countByExample(InfoExample example);
 
     int deleteByExample(InfoExample example);

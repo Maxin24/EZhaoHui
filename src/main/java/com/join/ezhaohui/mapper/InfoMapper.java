@@ -14,4 +14,6 @@ import java.util.List;
 @Mapper
 public interface InfoMapper extends MyBatisBaseDao<Info, Integer, InfoExample> {
     public List<Info> multiSelect(Info record);
+
+    public List<Info> multiFuzzySelect(Info record);
 }

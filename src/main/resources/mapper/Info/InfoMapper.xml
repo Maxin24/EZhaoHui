@@ -252,6 +252,12 @@
       </if>
     </where>
   </select>
+  <select id="multiFuzzySelect" resultType="com.join.ezhaohui.entity.Info" parameterType="com.join.ezhaohui.entity.Info">
+    select * from t_info
+    where
+    concat(type,companyName,companyNature,jobName,jobNature,eduBackground,url)
+    like "%"#{url,jdbcType=VARCHAR}"%"
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update t_info
     <set>
