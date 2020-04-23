@@ -11,6 +11,8 @@ import java.util.List;
  * @Description:
  */
 public interface InfoService {
+    public List<Info> multiSelectByPage(Info record,int pageNum,int pageSize);
+
     public List<Info> multiSelect(Info record);
 
     List<Info> multiFuzzySelect(Info record);
