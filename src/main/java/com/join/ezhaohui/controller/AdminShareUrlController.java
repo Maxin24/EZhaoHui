@@ -47,9 +47,11 @@ public class AdminShareUrlController {
     }
 
     @RequestMapping("/fuzzyUrl")
-    public Object selectFuzzy(HttpServletRequest request,HttpServletResponse response,@RequestParam String msg){
+    public Object selectFuzzy(HttpServletRequest request,HttpServletResponse response,@RequestParam String msg,@RequestParam String position,@RequestParam String type){
         Info data = new Info();
         data.setUrl(msg);
+        data.setPosition(position);
+        data.setType(type);
         List<Info> datas = infoService.multiFuzzySelect(data);
         return new ResponseBean(true,datas,CommonErrorEnum.SUCCESS_OPTION);
     }

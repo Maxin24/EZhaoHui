@@ -254,9 +254,19 @@
   </select>
   <select id="multiFuzzySelect" resultType="com.join.ezhaohui.entity.Info" parameterType="com.join.ezhaohui.entity.Info">
     select * from t_info
-    where
-    concat(type,companyName,companyNature,jobName,jobNature,eduBackground,url)
-    like "%"#{url,jdbcType=VARCHAR}"%"
+    <where>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR}
+      </if>
+      <if test="position != null">
+        and `position` = #{position,jdbcType=VARCHAR}
+      </if>
+      <if test="url != null">
+        and
+        concat(companyName,companyNature,jobName,jobNature,eduBackground,url)
+        like "%"#{url,jdbcType=VARCHAR}"%"
+      </if>
+    </where>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
     update t_info

@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author:ljx
@@ -39,7 +40,7 @@ public class InfoTests {
         record.setJobNature("IT");
         record.setPosition("长春");
         record.setType("测试");
-        record.setUrl("www.baidu.com");
+        record.setUrl("http://www.example.com/index.html#print");
 
         System.out.println(infoService.insert(record));
     }
@@ -49,6 +50,19 @@ public class InfoTests {
         Info info=new Info();
         info.setJobName("前端");
         System.out.println(infoService.multiSelect(info));
+    }
+
+    @Test
+    public void testMultiFuzzySelect(){
+        Info msg = new Info();
+//        msg.setUrl("国企");
+//        msg.setPosition("上海");
+//        msg.setType("政法类");
+        List<Info> msgs = infoService.multiFuzzySelect(msg);
+        for(Info demo : msgs){
+            System.out.println(demo.toString());
+        }
+        System.out.println(infoService.multiFuzzySelect(msg));
     }
 
     @Test
