@@ -20,6 +20,7 @@ public class AdminShareUrlController {
     @Autowired
     ShareUrlServiceImpl shareUrlService;
 
+    @Autowired
     InfoServiceImpl infoService;
 
     @RequestMapping("/showUrl")

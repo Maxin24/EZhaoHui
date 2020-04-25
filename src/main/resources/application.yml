@@ -36,12 +36,12 @@ master:
     driverClassName: com.mysql.cj.jdbc.Driver
 
 pagehelper:
-  #默认值为false
-  #该参数对使用RowBounds作为分页参数时有效
-  #该值设置为true时 会将RowBounds中的offset参数当场pageNum使用，可以用页码和页面大小两个参数进行分页
-  offset-as-page-num: true
-  #默认值为false
-  #该参数对使用RowBounds作为分页参数时有效
-  #当该值设置为true时 使用RowBounds分页会进行count查询
-  row-bounds-with-count: true
-  reasonable: false #分页合理化 默认为false 如果为true pageNum<=0时会查询第一页 pageNum>pages(页面总数)时 查询最后一页
+#默认值为false
+    #该参数对使用RowBounds作为分页参数时有效
+    #该值设置为true时 会将RowBounds中的offset参数当场pageNum使用，可以用页码和页面大小两个参数进行分页
+    offset-as-page-num: true
+    #默认值为false
+    #该参数对使用RowBounds作为分页参数时有效
+    #当该值设置为true时 使用RowBounds分页会进行count查询
+    row-bounds-with-count: true
+    reasonable: false #分页合理化 默认为false 如果为true pageNum<=0时会查询第一页 pageNum>pages(页面总数)时 查询最后一页

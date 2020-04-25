@@ -55,9 +55,9 @@ public class InfoTests {
     @Test
     public void testMultiFuzzySelect(){
         Info msg = new Info();
-//        msg.setUrl("国企");
-//        msg.setPosition("上海");
-//        msg.setType("政法类");
+        msg.setUrl("国企");
+        msg.setPosition("上海");
+        msg.setType("政法类");
         List<Info> msgs = infoService.multiFuzzySelect(msg);
         for(Info demo : msgs){
             System.out.println(demo.toString());

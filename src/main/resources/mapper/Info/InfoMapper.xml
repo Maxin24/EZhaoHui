@@ -259,12 +259,13 @@
         `type` = #{type,jdbcType=VARCHAR}
       </if>
       <if test="position != null">
-        and `position` = #{position,jdbcType=VARCHAR}
+        and
+         `position` = #{position,jdbcType=VARCHAR}
       </if>
       <if test="url != null">
         and
         concat(companyName,companyNature,jobName,jobNature,eduBackground,url)
-        like "%"#{url,jdbcType=VARCHAR}"%"
+        like '%${url}%'
       </if>
     </where>
   </select>
