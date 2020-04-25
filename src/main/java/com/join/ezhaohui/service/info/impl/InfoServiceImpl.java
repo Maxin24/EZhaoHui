@@ -1,5 +1,7 @@
 package com.join.ezhaohui.service.info.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.join.ezhaohui.entity.Info;
 import com.join.ezhaohui.entity.InfoExample;
 import com.join.ezhaohui.mapper.InfoMapper;
@@ -17,8 +19,17 @@ import java.util.List;
  */
 @Service
 public class InfoServiceImpl implements InfoService {
-    @Autowired
+    @Resource
     InfoMapper infoMapper;
+
+    @Override
+    public List<Info> multiSelectByPage(Info record, int pageNum, int pageSize) {
+        Page<?> page= PageHelper.startPage(pageNum,pageSize);
+        System.out.println("设置第"+pageNum+"页"+pageSize+"条数据");
+        List<Info> list=infoMapper.multiSelect(record);
+        System.out.println("总共有："+page.getTotal()+"条数据，实际返回："+list.size());
+        return list;
+    }
 
     @Override
     public List<Info> multiSelect(Info record) {

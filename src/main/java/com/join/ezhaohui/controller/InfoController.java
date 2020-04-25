@@ -28,25 +28,31 @@ public class InfoController {
     @Resource
     InfoService infoServiceImpl;
 
-    //测试成功
+
     @RequestMapping("/multiSelect")
     public Object multiSelect(Info info){
         return infoServiceImpl.multiSelect(info);
     }
-    //测试成功
+
+    @RequestMapping("/multiSelectByPage")
+    public Object multiSelectByPage(Info info,int pageNum,int pageSize){
+        return infoServiceImpl.multiSelectByPage(info,pageNum,pageSize);
+    }
+
     @RequestMapping("/insert")
     public Object insert(Info info){
+        //默认设置一个遥远的过期时间
         if(info.getExpirationTime()==null){
             info.setExpirationTime(new Timestamp((long)2000000000*1000));
         }
         return infoServiceImpl.insert(info);
     }
-    //测试成功
+
     @RequestMapping("/updateByPrimaryKeySelective")
     public Object updateByPrimaryKeySelective(Info info){
         return infoServiceImpl.updateByPrimaryKeySelective(info);
     }
-    //测试成功
+
     @RequestMapping("/deleteByPrimaryKey")
     public Object deleteByPrimaryKey(int id){
         return infoServiceImpl.deleteByPrimaryKey(id);
