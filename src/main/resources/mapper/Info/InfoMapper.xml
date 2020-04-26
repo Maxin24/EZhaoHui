@@ -265,7 +265,7 @@
       <if test="url != null">
         and
         concat(companyName,companyNature,jobName,jobNature,eduBackground,url)
-        like '%${url}%'
+        like like concat('%',#{url,jdbcType=VARCHAR},'%')
       </if>
     </where>
   </select>
