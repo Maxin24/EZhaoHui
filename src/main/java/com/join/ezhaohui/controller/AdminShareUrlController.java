@@ -6,13 +6,13 @@ import com.join.ezhaohui.service.info.impl.InfoServiceImpl;
 import com.join.ezhaohui.service.shareurl.impl.ShareUrlServiceImpl;
 import com.join.ezhaohui.utils.resultHander.CommonErrorEnum;
 import com.join.ezhaohui.utils.resultHander.ResponseBean;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin

@@ -218,7 +218,7 @@
     from t_info
     <where>
       <if test="type != null">
-        `type` = #{type,jdbcType=VARCHAR}
+        `type` = #{type,jdbcType=TIMESTAMP}
       </if>
       <if test="creatTime != null">
         and creatTime = #{creatTime,jdbcType=TIMESTAMP}
@@ -265,7 +265,7 @@
       <if test="url != null">
         and
         concat(companyName,companyNature,jobName,jobNature,eduBackground,url)
-        like like concat('%',#{url,jdbcType=VARCHAR},'%')
+        like concat('%',#{url,jdbcType=TIMESTAMP},'%')
       </if>
     </where>
   </select>
