@@ -32,7 +32,7 @@ public enum CommonErrorEnum {
     BAN_LOGIN("029","当前用户已被禁止登录"),
     WAIT_VERIFY_EMAIL("030","注册成功，请验证邮箱以激活账户"),
     NOT_EXIST_EMAIL("031","当前邮箱地址可用"),
-    FAILED_CREATEUSER("032","创建用户失败,用户名已被使用"),
+    CREATE_USER_FAILED("032","创建用户失败,用户名已被使用"),
     VERIFYED_EMAIL("033","当前邮箱已验证，请勿重复验证"),
     FAILED_AUTH("041", "非法请求，请登录后操作"),
     FIRST_DOWNLOAD("042", "首次下载"),

@@ -12,6 +12,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +41,7 @@ public class ShiroController {
     public Object register(@RequestParam String username,@RequestParam String password){
         User user1=userServiceImpl.selectUserByUsername(username);
         if(user1!=null){
-            return new ResponseBean(false,null,CommonErrorEnum.FAILED_CREATEUSER);
+            return new ResponseBean(false,null,CommonErrorEnum.CREATE_USER_FAILED);
         }
 
         User user=new User();
@@ -55,6 +56,7 @@ public class ShiroController {
         }
 
     }
+
 
     @RequestMapping("/logout")
     public Object logout(){

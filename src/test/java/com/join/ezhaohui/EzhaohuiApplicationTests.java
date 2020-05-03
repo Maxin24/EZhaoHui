@@ -12,15 +12,11 @@ import javax.annotation.Resource;
 
 @SpringBootTest
 class EzhaohuiApplicationTests {
-    @Resource
-    UserMapper userMapper;
+
 
     @Test
     void contextLoads() {
+
     }
 
-    @Test
-    void testUser(){
-        System.out.println(userMapper.selectByPrimaryKey(1));
-    }
 }

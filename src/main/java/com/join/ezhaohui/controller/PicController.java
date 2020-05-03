@@ -2,6 +2,8 @@ package com.join.ezhaohui.controller;
 
 import com.join.ezhaohui.entity.Pic;
 import com.join.ezhaohui.service.PicService.PicService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +28,7 @@ public class PicController {
         return picService.getAll();
     }
 
+
     @ResponseBody
     @RequestMapping("/insertPic")
     public Object insertPic(String url, MultipartFile picture, int rank, HttpServletRequest request) throws Exception{
@@ -37,6 +40,7 @@ public class PicController {
         }
         return new String(picService.insertPic(pic,picture,request));
     }
+
 
     @ResponseBody
     @RequestMapping("/delete")
@@ -52,6 +56,7 @@ public class PicController {
     public boolean rankRepeat(Integer rank) throws Exception{
         return picService.rankExist(rank);
     }
+
 
     @ResponseBody
     @RequestMapping("/update")

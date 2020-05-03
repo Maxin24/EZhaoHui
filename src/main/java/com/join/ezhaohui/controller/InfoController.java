@@ -3,6 +3,8 @@ package com.join.ezhaohui.controller;
 import com.join.ezhaohui.entity.Info;
 import com.join.ezhaohui.service.info.InfoService;
 import com.join.ezhaohui.utils.resultHander.ResponseBean;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;

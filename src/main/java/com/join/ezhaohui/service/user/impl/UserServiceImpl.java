@@ -14,6 +14,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.Serializable;
 
 /**
  * @Author:ljx
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
             return new ResponseBean(false,e.getMessage(), CommonErrorEnum.AUTHENTIC_FAIL);
         }
 
-        return new ResponseBean(true,null, CommonErrorEnum.LOGIN_SUCCESS);
+        return new ResponseBean(true,userMapper.selectUserByUsername((String)currentUser.getPrincipal()), CommonErrorEnum.LOGIN_SUCCESS);
     }
 
     @Override

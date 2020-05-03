@@ -6,7 +6,9 @@ import com.join.ezhaohui.service.info.impl.InfoServiceImpl;
 import com.join.ezhaohui.service.shareurl.impl.ShareUrlServiceImpl;
 import com.join.ezhaohui.utils.resultHander.CommonErrorEnum;
 import com.join.ezhaohui.utils.resultHander.ResponseBean;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ public class AdminShareUrlController {
 
     @Autowired
     InfoServiceImpl infoService;
+
 
     @RequestMapping("/showUrl")
     public Object listAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
