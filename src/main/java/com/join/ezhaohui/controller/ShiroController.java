@@ -34,6 +34,7 @@ public class ShiroController {
 
     @RequestMapping("/login")
     public Object login(@RequestParam String username,@RequestParam String password){
+        System.out.println("login被调用");
         return userServiceImpl.login(username,password);
     }
 

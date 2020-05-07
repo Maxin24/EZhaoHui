@@ -1,6 +1,7 @@
 package com.join.ezhaohui.interceptor;
 
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,8 @@ public class LoginInterceptor implements HandlerInterceptor {
         response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         response.setHeader("Access-Control-Allow-Methods","GET,HEAD,POST,PUT,DELETE,TRACE,OPTIONS,PATCH");
 
-        return false;
+        return true;
     }
+
+
 }
