@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 public interface UserService {
-    public User selectUserByUsername(String username);
-    public int addUser(User user);
-    public Object login(String username,String password);
-    public void logout();
+    User selectUserByUsername(String username);
+    int addUser(User user);
+    Object login(String username,String password);
+    void logout();
 }

@@ -31,8 +31,9 @@ public class UserRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String username=(String) authenticationToken.getPrincipal();
         User user=userServiceImpl.selectUserByUsername(username);
-        if(user==null)
+        if(user==null) {
             return null;
+        }
 
         SimpleAuthenticationInfo authenticationInfo=new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()),getName());
         return authenticationInfo;

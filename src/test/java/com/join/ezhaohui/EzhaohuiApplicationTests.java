@@ -16,7 +16,6 @@ class EzhaohuiApplicationTests {
 
     @Test
     void contextLoads() {
-
     }
 
 }
